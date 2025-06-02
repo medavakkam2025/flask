@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   flask:
     restart: unless-stopped
@@ -13,5 +15,20 @@ services:
       - mode: ingress
         target: 5000
         published: 5000
+    depends_on:
+      - mongodb
+    environment:
+      - MONGO_URI=mongodb://mongodb://localhost:27017/job_portal
     healthcheck:
       test: ["CMD", "python3", "-c", "import sys, urllib.request; urllib.request.urlopen(sys.argv[1]).read()", "http://localhost:5000/"]
+
+  mongodb:
+    image: mongo:6.0
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - "27017:27017"
+
+volumes:
+  mongo-data:
