@@ -2,6 +2,6 @@ Flask==2.2.5
 Werkzeug==2.2.2
 MarkupSafe==2.1.1
 Flask
-pymongo
+pymongo>=4.0
 pandas
 openpyxl
