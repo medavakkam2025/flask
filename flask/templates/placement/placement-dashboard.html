@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Placement Dashboard</title>
+    <link rel="stylesheet" href="./Utilities.css">
+  <style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f4faff;
+      height: 100vh;
+    }
+    .flex{
+        display: flex;
+    }
+    .mx-auto{
+        margin: 0 auto;
+    }
+    .sidebar {
+      width: 220px;
+      background: #2b94c8;
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+      color: #fff;
+      padding: 1rem;
+      box-shadow: 2px 0 12px rgba(0, 0, 0, 0.1);
+    }
+    .sidebar h2 {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .sidebar a {
+      display: block;
+      color: #fff;
+      text-decoration: none;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+    .sidebar a:hover {
+      background: #0a3951;
+    }
+    .sidebar a.active {
+       background: #0a3951;
+    }
+    .main-content {
+      margin-left: 300px;
+      flex: 1;
+      display: flex;
+       justify-content: center;
+       justify-items: center;
+        align-items: center;
+        align-self: center;
+        align-content: center;
+        justify-self: center;
+      flex-direction: column;
+      height: 100vh;
+    }
+    .iframe-container {
+      flex: 1;
+      border: none;
+      width: 100vh;
+      height: 200%;
+    }
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      width: 900px;
+      margin: 0 auto;
+    }
+    .dashboard-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      padding: 2rem 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: box-shadow 0.2s, transform 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 150px;
+      justify-content: center;
+    }
+    .dashboard-card:hover {
+      box-shadow: 0 4px 24px rgba(43,148,200,0.15);
+      transform: translateY(-4px) scale(1.03);
+    }
+    .icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #2b94c8;
+    }
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #0a3951;
+    }
+    @media (max-width: 1000px) {
+      .dashboard-grid {
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+      }
+    }
+    @media (max-width: 600px) {
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+        width: 100%;
+      }
+    }
+    .iframe-container {
+      margin-top: 2rem;
+      width: 100%;
+      height: 500px;
+      border: none;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="main-content mx-auto" style="margin-left:0;">
+    <h1 style="margin-bottom: 2rem; color: #0a3951;">Placement Dashboard</h1>
+    <div class="dashboard-grid">
+      <div class="dashboard-card" onclick="window.open('https://forms.gle/PbYjSYNBKcGy9mpR7', '_blank')">
+        <div class="icon">&#128100;</div>
+        <div class="card-title">New Employers Adding</div>
+      </div>
+      <div class="dashboard-card">
+        <div class="icon">&#128101;</div>
+        <div class="card-title">SPOC Wise Employer View</div>
+      </div>
+      <div class="dashboard-card" onclick="window.open('https://docs.google.com/spreadsheets/d/1URt-Sd9o4H0y8Trcgp53LXXgWgpfCmA3dGu5z6nq264/edit?gid=168834487#gid=168834487', '_blank')">
+        <div class="icon">&#128197;</div>
+        <div class="card-title">Batch Calender View</div>
+      </div>
+      <div class="dashboard-card" onclick="window.open('work-tracker.html', '_blank')">
+        <div class="icon">&#128221;</div>
+        <div class="card-title">Work Tracker</div>
+      </div>
+      <div class="dashboard-card" onclick="window.open('job-drive-calendar.html', '_blank')">
+        <div class="icon">&#128197;</div>
+        <div class="card-title">Job Drive Calendar View</div>
+      </div>
+      <div class="dashboard-card" onclick="location.href='/post-job'">
+        <div class="icon">&#9998;</div>
+        <div class="card-title">Post a Job</div>
+      </div>
+      <div class="dashboard-card" onclick="location.href='/applicants'">
+        <div class="icon">&#128188;</div>
+        <div class="card-title">Applied Studnet</div>
+      </div>
+      <div class="dashboard-card">
+        <div class="icon">&#128202;</div>
+        <div class="card-title"><a href="{{ url_for('reports') }}">View Reports</a></div>
+      </div>
+      <div class="dashboard-card">
+        <div class="icon">&#9881;</div>
+        <div class="card-title"><a href="{{ url_for('jobs') }}">Current Openning</a></div>
+      </div>
+      <div class="dashboard-card">
+        <div class="icon">&#9881;</div>
+        <div class="card-title"><a href="{{ url_for('upload_form') }}">Upload Studnet</a></div>
+      </div>
+      <div class="dashboard-card">
+        <div class="icon">&#9881;</div>
+        <div class="card-title"><a href="{{ url_for('login') }}">Studnet_Apply</a></div>
+      </div>
+    </div>
+    <iframe id="formIframe" class="iframe-container" src="" style="display:none;"></iframe>
+  </div>
+  <script>
+    function openForm(view) {
+      const iframe = document.getElementById('formIframe');
+      if (view === 'newEmployers') {
+        iframe.src = "https://forms.gle/PbYjSYNBKcGy9mpR7";
+        iframe.style.display = "block";
+      } else if (view === 'calendar') {
+        iframe.src = "https://calendar.google.com/calendar/embed?src=en.indian%23holiday%40group.v.calendar.google.com&ctz=UTC";
+        iframe.style.display = "block";
+      }
+    }
+  </script>
+</body>
+</html>

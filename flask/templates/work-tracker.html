@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work Tracker</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f4faff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h1 {
+      color: #0a3951;
+      margin-bottom: 2rem;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .tracker-btn {
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 8px;
+      background: #2b94c8;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-weight: bold;
+    }
+
+    .tracker-btn:hover {
+      background: #0a3951;
+    }
+  </style>
+</head>
+<body>
+  <h1>Placement Officer Work Tracker</h1>
+  <div class="btn-group">
+    <button class="tracker-btn" onclick="window.open('https://forms.gle/RiRCfoJmVaySwgqM8', '_blank')">
+      Daily Work Force Tracker
+    </button>
+    <button class="tracker-btn" onclick="window.open('https://docs.google.com/spreadsheets/d/1gjqSW7LvzC8fasVLaE3OuwQ4wT8qkH7ysW-El9Y4kRQ/edit?usp=sharing', '_blank')">
+      Sheet View
+    </button>
+  </div>
+</body>
+</html>

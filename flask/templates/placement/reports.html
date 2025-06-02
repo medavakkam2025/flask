@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Job Reports</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f2f5;
+            padding: 30px;
+        }
+        .report-container {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            max-width: 700px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            margin-top: 25px;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="report-container">
+        <h2>Job Application Report</h2>
+        <p><strong>Total Jobs Posted:</strong> {{ total_jobs }}</p>
+
+        <table>
+            <tr>
+                <th>Job Title</th>
+                <th>Number of Applicants</th>
+            </tr>
+            {% for stat in application_stats %}
+            <tr>
+                <td>{{ stat._id }}</td>
+                <td>{{ stat.total_applicants }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

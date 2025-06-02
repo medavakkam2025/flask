@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Applicant</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f8;
+            padding: 40px;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        form {
+            background-color: #fff;
+            max-width: 500px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 6px;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, select:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h2>Edit Applicant Details</h2>
+    <form method="POST">
+        <label>Name</label>
+        <input type="text" name="name" value="{{ applicant.name }}">
+
+        <label>Email</label>
+        <input type="email" name="email" value="{{ applicant.email }}" readonly>
+
+        <label>Phone</label>
+        <input type="text" name="phone" value="{{ applicant.phone }}">
+
+        <label>Date of Birth</label>
+        <input type="date" name="dob" value="{{ applicant.dob }}">
+
+        <label>Job Title</label>
+        <input type="text" name="job_title" value="{{ applicant.job_title }}">
+
+        <label>Status</label>
+        <select name="status">
+            <option value="Pending" {% if applicant.status == 'Pending' %}selected{% endif %}>Pending</option>
+            <option value="Placed" {% if applicant.status == 'Placed' %}selected{% endif %}>Placed</option>
+            <option value="Unplaced" {% if applicant.status == 'Unplaced' %}selected{% endif %}>Unplaced</option>
+            <option value="Attending Interview" {% if applicant.status == 'Attending Interview' %}selected{% endif %}>Attending Interview</option>
+        </select>
+
+        <input type="submit" value="Update Applicant">
+    </form>
+</body>
+</html>

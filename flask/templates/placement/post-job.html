@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Post a Job</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 750px;
+            margin: auto;
+            background: #ffffff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #444;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 18px;
+            transition: border-color 0.3s;
+        }
+        input:focus, textarea:focus, select:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+        textarea {
+            resize: vertical;
+        }
+        .list-section {
+            margin-bottom: 20px;
+        }
+        .list-section input {
+            margin-bottom: 10px;
+        }
+        .add-more-btn {
+            background-color: #f1f1f1;
+            color: #333;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: -8px;
+        }
+        .add-more-btn:hover {
+            background-color: #e0e0e0;
+        }
+        button[type="submit"] {
+            width: 100%;
+            padding: 14px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script>
+        function addField(sectionId, name) {
+            const container = document.getElementById(sectionId);
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.name = name;
+            input.placeholder = "Enter value";
+            container.appendChild(input);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Post a New Job</h2>
+        <form method="POST">
+            <label for="job_title">Job Title</label>
+            <input type="text" name="job_title" required>
+
+            <label for="company">Company</label>
+            <input type="text" name="company" required>
+
+            <label for="location">Location</label>
+            <input type="text" name="location" required>
+
+            <label for="job_type">Job Type</label>
+            <select name="job_type" required>
+                <option value="" disabled selected>Select job type</option>
+                <option value="Full Time">Full Time</option>
+                <option value="Part Time">Part Time</option>
+                <option value="Internship">Internship</option>
+            </select>
+
+            <label for="experience">Experience Required</label>
+            <input type="text" name="experience" required>
+
+            <label for="salary">Salary</label>
+            <input type="text" name="salary">
+
+            <label for="deadline">Application Deadline</label>
+            <input type="date" name="deadline">
+
+            <label for="description">Job Description</label>
+            <textarea name="description" rows="5" required></textarea>
+
+            <div class="list-section">
+                <label>Education</label>
+                <div id="education_section">
+                    <input type="text" name="education[]" placeholder="Enter education requirement">
+                </div>
+                <button type="button" class="add-more-btn" onclick="addField('education_section', 'education[]')">+ Add More</button>
+            </div>
+
+            <div class="list-section">
+                <label>Requirements</label>
+                <div id="requirement_section">
+                    <input type="text" name="requirement[]" placeholder="Enter job requirement">
+                </div>
+                <button type="button" class="add-more-btn" onclick="addField('requirement_section', 'requirement[]')">+ Add More</button>
+            </div>
+
+            <div class="list-section">
+                <label>Benefits</label>
+                <div id="benefit_section">
+                    <input type="text" name="benefit[]" placeholder="Enter job benefit">
+                </div>
+                <button type="button" class="add-more-btn" onclick="addField('benefit_section', 'benefit[]')">+ Add More</button>
+            </div>
+
+            <button type="submit">Post Job</button>
+        </form>
+    </div>
+</body>
+</html>
